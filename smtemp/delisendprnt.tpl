@@ -30,19 +30,19 @@ onload="window.focus();window.print();">
 					{else}
 <div style="page-break-after:always;"></div>
 {*---- подложка ----*}
-<img src="delimess2.jpg" style="margin-left:30mm;margin-top:1cm;">
+<img src="delimess7.jpg" style="margin-left:5mm;margin-top:1cm;">
 {*---- Х за доставяне ----*}
-<div style="position:absolute;left:109.5mm;top:174mm;font:normal 12pt verdana;">
+<div style="position:absolute;left:113.5mm;top:160mm;font:normal 10pt verdana;">
 X </div>
 {*---- номер плик ----*}
-<div style="{$bord}position:absolute;left:109mm;top:187mm;font:normal 8pt verdana;">
+<div style="{$bord}position:absolute;left:169mm;top:162mm;font:normal 8pt verdana;">
 #{$ARENVE.id} </div>
 {*---- получател ----*}
-<table cellspacing=0 cellpadding=0 style="{$bord}position:absolute;left:45mm;top:193mm;width:62mm;height:36mm;">
+<table cellspacing=0 cellpadding=0 style="{$bord}position:absolute;left:12mm;top:165mm;width:100mm;height:36mm;">
 <tr>
 <td style="padding:2mm;font:normal 8pt verdana;"> 
-Подписаният получател <b>{$ARENVE.adresat}</b>{if empty($ARENVE.address)}{else}, адрес <b>{$ARENVE.address}</b>{/if} 
-удостоверявам, че получих 
+Подписаният получател <b>{$ARENVE.adresat}</b>{if empty($ARENVE.address)}{else},<br><br> адрес <b>{$ARENVE.address}</b>{/if} 
+<br>удостоверявам, че получих 
 								{counter start=0 assign=coun}
 	{foreach from=$ARDOUT item=elem}
 								{counter assign=coun}
@@ -50,11 +50,11 @@ X </div>
 	{/foreach}
 </table>
 {*---- подател ----*}
-<table cellspacing=0 cellpadding=0 style="{$bord}position:absolute;left:116mm;top:193mm;width:56mm;height:35mm;">
+<table cellspacing=0 cellpadding=0 style="{$bord}position:absolute;left:103mm;top:214mm;width:100mm;height:35mm;">
 <tr align=center>
 <td style="padding:2mm;font:normal 8pt verdana;"> 
-Кантора на <br>Частен съдебен изпълнител <br>№ {$ROOFFI.serial} 
-<br>{$ROOFFI.shortname} <br>{$ROOFFI.adres2} 
+Кантора на Частен съдебен изпълнител № {$ROOFFI.serial} 
+<br><br>{$ROOFFI.shortname} <br>{$ROOFFI.adres2} 
 </table>
 					{/if}
 {***
