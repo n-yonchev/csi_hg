@@ -105,6 +105,16 @@ input {ldelim}font: normal 8pt verdana{rdelim}
 <input type="text" name="oryear" id="oryear" size=10 {include file="_erelem.tpl" ID="oryear" C1="input" C2="inputer"}> 
 			</table>
 		</fieldset>
+
+		<fieldset class="filtgr">
+		<legend align=right> постъпления </legend>
+			<table>
+			<tr>
+<td> без постъпления след дата
+<br>
+<input type="text" name="last_finance" id="last_finance" size=30 {include file="_erelem.tpl" ID="last_finance" C1="input" C2="inputer"}> 
+			</table>
+		</fieldset>
 {*---------------------------------------------------------------------*}
 
 {*-------------------------- страни ------------------------------*}

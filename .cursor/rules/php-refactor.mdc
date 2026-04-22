@@ -1,0 +1,21 @@
+---
+description: PHP refactor — tabs/spaces, empty branches, comment cleanup (no behavior change)
+alwaysApply: true
+---
+
+# Refactoring PHP files in this project
+
+When the user asks to **refactor** a PHP file (or multiple PHP files), do all of the following unless they narrow the scope:
+
+1. **Formatting** — Use consistent indentation (prefer spaces over tabs, one style throughout the touched file). Fix mixed tabs/spaces.
+
+2. **Control flow** — Remove **empty** `if` / `else` / `elseif` bodies by rewriting to equivalent logic (e.g. early `continue`, invert conditions, merge branches). **Do not change runtime behavior.**
+
+3. **Comments — debug output only** — Remove comments whose purpose is **debug output**, such as commented-out calls to:
+   - `print`, `print_r`, `print_rr`, `var_dump`, `var_export`, `echo`, `debug_*`, `dump`, etc.
+
+4. **Comments — keep everything else** — Preserve normal comments: `//` and `#` explanations, dates, authors, `//` old one-line alternatives, `//` commented-out **code** (non-print), block comments like `/* ... */` / `/***** ... *****/` that document or retain old snippets, and `//$variable = ...` style toggles **unless** they are clearly print/debug dumps.
+
+5. **No scope creep** — Refactor only what the user asked; do not change logic beyond the equivalent rewrites above.
+
+After edits, run `php -l` on changed PHP files when possible.
