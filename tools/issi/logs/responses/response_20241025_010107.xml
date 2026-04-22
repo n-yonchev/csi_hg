@@ -1,0 +1,28 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><SendMessageResponse xmlns="http://tempuri.org/"><SendMessageResult>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;TransferMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://issi.transfer.bg/messaging/v1"&gt;&lt;Header&gt;&lt;MessageType&gt;TransferStatusResponse&lt;/MessageType&gt;&lt;TransferDate&gt;2024-10-25T01:01:07.7875808+03:00&lt;/TransferDate&gt;&lt;TransferGUID&gt;f0f499f34757480daccf9cd8c5071e74&lt;/TransferGUID&gt;&lt;/Header&gt;&lt;Body&gt;&lt;TransferStatusResponse&gt;&lt;TransferGUID&gt;{842e9b80-6476-4aa1-a2cc-2fc0e5fe3697}&lt;/TransferGUID&gt;&lt;ResponseDescription&gt;Грешка при добавяне на запис във входящ регистър    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp;amp; dataReady)&#xD;
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, String endMethod, Boolean isInternal)&#xD;
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)&#xD;
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)&#xD;
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)&#xD;
+--- End of stack trace from previous location where exception was thrown ---&#xD;
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()&#xD;
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;
+   at System.Data.Entity.Core.Objects.ObjectContext.&amp;lt;ExecuteStoreCommandInternalAsync&amp;gt;d__181.MoveNext()&#xD;
+--- End of stack trace from previous location where exception was thrown ---&#xD;
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()&#xD;
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;
+   at System.Data.Entity.Core.Objects.ObjectContext.&amp;lt;ExecuteInTransactionAsync&amp;gt;d__156`1.MoveNext()&#xD;
+--- End of stack trace from previous location where exception was thrown ---&#xD;
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()&#xD;
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.&amp;lt;ExecuteAsyncImplementation&amp;gt;d__6`1.MoveNext()&#xD;
+--- End of stack trace from previous location where exception was thrown ---&#xD;
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()&#xD;
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;
+   at System.Data.Entity.Core.Objects.ObjectContext.&amp;lt;ExecuteStoreCommandInternalAsync&amp;gt;d__180.MoveNext()&#xD;
+--- End of stack trace from previous location where exception was thrown ---&#xD;
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()&#xD;
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()&#xD;
+   at ISSIService.TransferService.&amp;lt;ProcessIncomingRegAsync&amp;gt;d__11.MoveNext() in E:\CielaTeams\ISSI\Apps\AppsV2\ISSIApp\ISSIService\TransferService.svc.cs:line 516 , Успешно добавени 339 записa в Изходящия регистър , Липсват данни за актуализация на дневник на извършените действия, Успешно добавени 82 записa в регистър на заведените дела. &lt;/ResponseDescription&gt;&lt;/TransferStatusResponse&gt;&lt;/Body&gt;&lt;/TransferMessage&gt;</SendMessageResult></SendMessageResponse></s:Body></s:Envelope>

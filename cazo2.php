@@ -1,0 +1,175 @@
+<?php
+# зона-2 : предмет на делото - списък 
+# отгоре : 
+#    $edit= case.id 
+#    $zone= 2 
+#    $func= view, modi 
+# елемент за настройка 
+#    $idel - subject.id  
+//print_rr($GETPARAM);
+//print session_name()."=".session_id();
+
+
+					#----- дв-86/17----- 
+					include_once "cazo2a.php";
+					//include "cazo2a.php";
+
+# таблицата 
+$taname= "subject";
+# шаблона 
+$tpname= "cazo2view.tpl";
+//# текст за типа участник 
+//$listtext= "длъжници";
+
+# за include при корекция 
+$modiname= "cazo2modi.ajax.php";
+# съобщение при авариен край 
+$diemess= "cazo2";
+
+
+						# евентуално изтриване 
+						$delrec= $GETPARAM["delrec"];
+						if (isset($delrec)){
+							# общо за взискатели/длъжници 
+							include_once "cazo2dele.ajax.php";
+exit;
+						}else{
+						}
+									# модификация на избрания запис в тази зона 
+									//$view= $GETPARAM["view"];
+									if ($func=="modi"){
+
+					#----- дв-86/17----- 
+					//include_once "cazo2b.php";
+					include "cazo2b.php";
+										
+										include_once $modiname;
+										exit;
+									}else{
+									}
+# според функцията 
+if (0){
+}elseif ($func=="view"){
+//				$editel= "edit=$edit&zone=$zone";
+//				$urlmod= geturl($editel."&func=modi");
+				//$editel= "edit=$edit&zone=$zone&func=modi";
+				//# add new link 
+				//$addnew= geturl($modeel."&idel=0");
+	//$tpname= "cazo3view.tpl";
+//}elseif ($func=="modi"){
+//	$tpname= "cazo3modi.tpl";
+}else{
+die("$diemess=func=$func");
+}
+
+# основните параметри 
+$modeel= "edit=$edit&zone=$zone&func=modi";
+//$tpname= "cazo3view.tpl";
+# add new link 
+$addnew= geturl($modeel."&idel=0");
+
+# списъка 
+$filter= "where idcase=$edit";
+//$mylist= $DB->select("select * from claimer $filter order by id");
+$mylist= $DB->select("select * from $taname $filter order by id");
+$mylist= dbconv($mylist);
+//print_r($mylist);
+
+											
+											# 10.02.2009 
+											# временно решение - лихви и такса за ЧСИ 
+											# четем списъка с лихвените проценти по периоди 
+											$arperc= getpercent();
+											# функциите за изчисляване 
+											include_once "subjpaymhist.inc.php";
+											# днешната дата 
+											$currdate= date("Y-m-d");
+$smarty->assign("CURRDATE", $currdate);
+																# общо главница/лихва за всички предмети 
+																$capireca= 0;
+																$intereca= 0;
+																		# 08.09.2009 общо сума за формиране на т.26 
+																		$taxareca= 0;
+											
+# трансформираме го - параметри за иконите 
+foreach ($mylist as $uskey=>$uscont){
+				$idcurr= $uscont["id"];
+	$mylist[$uskey]["edit"]= geturl($modeel."&idel=".$idcurr);
+	$mylist[$uskey]["delrec"]= geturl($modeel."&delrec=".$idcurr);
+				$mylist[$uskey]["paym"]= geturl("&subj=".$idcurr);
+//	$mylist[$uskey]["acti"]= geturl($modeel."&acti=".$idcurr);
+//	$mylist[$uskey]["inac"]= geturl($modeel."&inac=".$idcurr);
+				# списъка с длъжниците за текущия елемент 
+				# масив с debtor.id 
+/***
+	$mylist[$uskey]["listde"]= explode(",",$uscont["listdebtor"]);
+	$mylist[$uskey]["counde"]= count($mylist[$uskey]["listde"]);
+***/
+					#----- дв-86/17----- 
+					if (empty($uscont["listdebtor"])){
+	$mylist[$uskey]["listde"]= "";
+	$mylist[$uskey]["counde"]= 0;
+					}else{
+	$mylist[$uskey]["listde"]= explode(",",$uscont["listdebtor"]);
+	$mylist[$uskey]["counde"]= count($mylist[$uskey]["listde"]);
+					}
+			# не е include_once - за да се изпълни многократно в цикъла 
+			include "cazo2.inc.php";
+}
+//print_rr(toutf8($mylist));
+											# 10.02.2009 
+											# временно решение - лихви и такса за ЧСИ 
+											# изчисляваме и предаваме за извеждане 
+											$recasum= $capireca + $intereca;
+//											$calctax= calctax($recasum);
+											$smarty->assign("RECASUM", $recasum);
+//											$smarty->assign("RECATAX", $calctax);
+																		# 08.09.2009 формираме т.26 
+											$smarty->assign("RECAT26", $taxareca);
+																		$calctax= calctax($taxareca);
+												//# включително ДДС 
+												//$calctax=  1.2 * $calctax;
+												$smarty->assign("RECATAX", $calctax);
+											# 16.04.2009 
+											# и общата дължима сума 
+											$recatot= $recasum + $calctax;
+											$smarty->assign("RECATOT", $recatot);
+										# записваме в сесията общо главница, общо лихва, такса ЧСИ 
+										$_SESSION["capireca"]= $capireca;
+										$_SESSION["intereca"]= $intereca;
+										$_SESSION["calctax"]= $calctax;
+										
+
+
+						# за извеждане на взискател - четем списъка с взискатели по делото 
+						$arclai= getselect("claimer","name","idcase=$edit",false);
+						$arclai= dbconv($arclai);
+						# предаваме съдържанието на масива 
+						$smarty->assign("ARCLAI", $arclai);
+				# за извеждане на отделен длъжник - четем списъка с длъжници по делото 
+				$ardebt= getselect("debtor","name","idcase=$edit",false);
+				$ardebt= dbconv($ardebt);
+				# предаваме съдържанието на масива 
+				$smarty->assign("ARDEBT", $ardebt);
+						# за извеждане на тип - кратко 
+						# предаваме съдържанието на масива 
+						$smarty->assign("ARTYPE", $listsubjtype2);
+						# за извеждане на подтип - кратко 
+						# предаваме съдържанието на масива 
+						$smarty->assign("ARSUBT", $listsubjst2);
+
+					#----- дв-86/17----- 
+					//include_once "cazo2a.php";
+					include "cazo2b.php";
+
+# резултата 
+//$pagecont= smdisp("cazo3view.tpl","iconv");
+//				$smarty->assign("URLMOD", $urlmod);
+//				$smarty->assign("DATA", $rocase);
+$smarty->assign("ADDNEW", $addnew);
+$smarty->assign("LIST", $mylist);
+//$smarty->assign("LISTTEXT", $listtext);
+$pagecont= smdisp($tpname,"iconv");
+
+
+?>

@@ -1,0 +1,144 @@
+<?php
+# изх.документи за връчване 
+# корекция на група маркирани документи 
+# отгоре : 
+#    $GETPARAM - масив с параметрите от GET 
+#    $mode - текущия режим 
+#    $vari - вторично меню 
+#    $page - текущата страница 
+# параметри : 
+#    $deliedit=0 
+# още отгоре : 
+#    $modeel - базов стринг за линкове 
+#    $relurl - линк за рефреш след приключване 
+#    $taname, $tana - тримес.таблица 
+//# $varitt 1=поща 2=призовкар 
+# маркирани : 
+#    $aridpost - масив с документи id от тримес.таблица 
+/*
+# алтернативно извикване - за списък - от deliinpu.php 
+#    $taname==NULL 
+#    $aridpost съдържа елементи пример deli_2012_4^297357 = тримес.таблица ^ id в нея 
+*/
+//print_r($GETPARAM);
+//print_rr($aridpost);
+
+
+//# таблицата 
+//$taname= "post";
+# шаблона 
+$tpname= "delieditcb.ajax.tpl";
+/***
+# полетата 
+$filist= array(
+	"idpostuser"=> NULL
+	,"date1"=> NULL
+	,"date2"=> NULL
+	,"date3"=> NULL
+	,"idpoststat"=> NULL
+	,"iddelisour"=> NULL
+);
+***/
+# полетата 
+$filist= array(
+	"date1"=> NULL
+	,"date2"=> NULL
+	,"date3"=> NULL
+	,"idpoststat"=> NULL
+);
+# константни полета 
+//$ficonst= array("iduser"=>$iduser);
+$ficonst= array();
+//# reload - след успешен събмит 
+//$relurl= geturl("mode=".$mode."&page=".$page);
+//$relurl= geturl("mode=".$mode);
+
+
+												$istoform= true;
+if (isset($_POST["submit"])){
+//print "<br>===before===";
+//$co2= $DB->selectCell("select count(*) from deliexte");
+//print "<h2>$co2</h2>";
+										# проверяваме за грешки 
+										$lister= array();
+				# формираме масива с данните 
+				$aset= array();
+				foreach($filist as $finame=>$x2){
+					$pocont= $_POST[$finame];
+					if (empty($pocont)){
+					}else{
+						if (substr($finame,0,4)=="date"){
+										$resudate= validator_bgdate_valid($pocont,array());
+										if ($resudate===true){
+										}else{
+											$lister[$finame]= $resudate[0];
+										}
+							$pocont= bgdateto($pocont);
+						}else{
+						}
+						$aset[$finame]= $pocont;
+					}
+				}
+											if (empty($lister)){
+												$istoform= false;
+											}else{
+												$istoform= true;
+	$smarty->assign("LISTER",$lister);
+											}
+}else{
+}
+												if ($istoform){
+/*
+							# за избор на призовкар 
+							$aruserpost= getselect("postuser","name","1",true);
+							//$aruserpost= dbconv($aruserpost);
+						$smarty->assign("ARUSERPOST", "aruserpost");
+							# за избор на статус 
+									if ($varitt==1){
+										$arstatpost= getselect("poststat2","name","1",true);
+									}else{
+							$arstatpost= getselect("poststat","name","1",true);
+									}
+							//$arstatpost= dbconv($arstatpost);
+						$smarty->assign("ARSTATPOST", "arstatpost");
+										# за избор на източник 
+										$arsourpost= getselect("delisour","name","1",true);
+										$smarty->assign("ARSOURPOSTNAME", "arsourpost");
+*/
+							# за избор на статус 
+									//if ($varitt==1){
+							$arstat1= getselect("poststat","name","idtype=1",false);
+									//}else{
+							$arstat2= getselect("poststat","name","idtype=2",false);
+									//}
+							$arstatpost= array();
+							$arstatpost[0]= "";
+							$arstatpost[$it=$listtypepost_utf8[2]]= $arstat2;
+							$arstatpost[$it=$listtypepost_utf8[1]]= $arstat1;
+# 28.08.2015 - още 2 метода 
+$arstat3= getselect("poststat","name","idtype=3",false);
+$arstat4= getselect("poststat","name","idtype=4",false);
+$arstatpost[$it=$listtypepost_utf8[3]]= $arstat3;
+$arstatpost[$it=$listtypepost_utf8[4]]= $arstat4;
+						$smarty->assign("ARSTATPOST", "arstatpost");
+	$smarty->assign("COUN", count($aridpost));
+	# извеждаме формата 
+//	$smarty->assign("EDIT", $edit);
+	$smarty->assign("FILIST", $filist);
+	print smdisp($tpname,"iconv");
+												}else{
+				# корегираме маркираните записи 
+				if (empty($aset)){
+				}else{
+					foreach($aridpost as $idpost){
+//print "<br>idpost=[$idpost]";
+						$DB->query("update $taname set ?a where id=?d"  ,$aset,$idpost);
+					}
+				}
+//$co2= $DB->selectCell("select count(*) from deliexte");
+//print "<h2>$co2</h2>";
+	# redirect 
+	reload("parent",$relurl);
+												}
+
+?>

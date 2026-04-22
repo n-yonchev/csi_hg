@@ -1,0 +1,2023 @@
+Array
+(
+    [1] => Array
+        (
+            [id] => 259150
+            [date] => 2024-10-02
+            [oper] => 3
+            [desc] => олихвяема
+            [amou] => 409.03
+            [move] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [total] => 409.03
+                        )
+
+                    [taxamo] => 409.03
+                )
+
+            [rep2plus] => Array
+                (
+                    [9] => 409.03
+                    [c5fee] => 49.08
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [total] => 409.03
+                        )
+
+                    [taxamo] => 409.03
+                    [0] => Array
+                        (
+                            [fee] => 49.08
+                            [total] => 49.08
+                        )
+
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [total] => 409.03
+                        )
+
+                    [taxamo] => 409.03
+                    [0] => Array
+                        (
+                            [fee] => 49.08
+                            [total] => 49.08
+                        )
+
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 409.03
+                    [c5dru] => 0
+                    [c5fee] => 49.08
+                    [5] => 49.08
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 458.11
+        )
+
+    [2] => Array
+        (
+            [id] => 259153
+            [date] => 2024-11-19
+            [oper] => 5
+            [desc] => 
+            [amou] => no
+            [idclai] => 24730
+            [move] => Array
+                (
+                    [intelink] => 1
+                    [24730] => Array
+                        (
+                            [perc] => 7.28
+                            [total] => 7.28
+                        )
+
+                    [0] => Array
+                        (
+                            [perc] => 0
+                            [total] => 0
+                        )
+
+                    [taxamo] => 7.28
+                )
+
+            [para] => Array
+                (
+                    [24730] => Array
+                        (
+                            [0] => 2024-10-02
+                            [1] => 2024-11-19
+                            [2] => 409.03
+                        )
+
+                    [0] => Array
+                        (
+                            [0] => 2024-10-02
+                            [1] => 2024-11-19
+                            [2] => 
+                        )
+
+                )
+
+            [rep2plus] => Array
+                (
+                    [8] => 7.28
+                    [c5fee] => 49.95
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 7.28
+                            [total] => 416.31
+                        )
+
+                    [taxamo] => 416.31
+                    [0] => Array
+                        (
+                            [fee] => 49.95
+                            [perc] => 0
+                            [total] => 49.95
+                        )
+
+                    [intelink] => 1
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 7.28
+                            [total] => 416.31
+                        )
+
+                    [taxamo] => 416.31
+                    [0] => Array
+                        (
+                            [fee] => 49.95
+                            [perc] => 0
+                            [total] => 49.95
+                        )
+
+                    [intelink] => 1
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 409.03
+                    [c5dru] => 0
+                    [c5fee] => 49.95
+                    [5] => 49.95
+                    [8] => 7.28
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 466.26
+        )
+
+    [3] => Array
+        (
+            [id] => 259153
+            [date] => 2024-11-19
+            [oper] => 3
+            [desc] => неолих/изп.лист
+            [amou] => 26.56
+            [move] => Array
+                (
+                    [24730] => Array
+                        (
+                            [tax] => 26.56
+                            [total] => 26.56
+                        )
+
+                    [taxamo] => 26.56
+                )
+
+            [rep2plus] => Array
+                (
+                    [9] => 26.56
+                    [c5fee] => 53.14
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 7.28
+                            [tax] => 26.56
+                            [total] => 442.87
+                        )
+
+                    [taxamo] => 442.87
+                    [0] => Array
+                        (
+                            [fee] => 53.14
+                            [perc] => 0
+                            [total] => 53.14
+                        )
+
+                    [intelink] => 1
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 7.28
+                            [tax] => 26.56
+                            [total] => 442.87
+                        )
+
+                    [taxamo] => 442.87
+                    [0] => Array
+                        (
+                            [fee] => 53.14
+                            [perc] => 0
+                            [total] => 53.14
+                        )
+
+                    [intelink] => 1
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 435.59
+                    [c5dru] => 0
+                    [c5fee] => 53.14
+                    [5] => 53.14
+                    [8] => 7.28
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 496.01
+        )
+
+    [4] => Array
+        (
+            [id] => 259152
+            [date] => 2024-11-19
+            [oper] => 3
+            [desc] => неолих/изп.лист
+            [amou] => 48.76
+            [move] => Array
+                (
+                    [24730] => Array
+                        (
+                            [tax] => 48.76
+                            [total] => 48.76
+                        )
+
+                    [taxamo] => 48.76
+                )
+
+            [rep2plus] => Array
+                (
+                    [9] => 48.76
+                    [c5fee] => 58.99
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 7.28
+                            [tax] => 75.32
+                            [total] => 491.63
+                        )
+
+                    [taxamo] => 491.63
+                    [0] => Array
+                        (
+                            [fee] => 58.99
+                            [perc] => 0
+                            [total] => 58.99
+                        )
+
+                    [intelink] => 1
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 7.28
+                            [tax] => 75.32
+                            [total] => 491.63
+                        )
+
+                    [taxamo] => 491.63
+                    [0] => Array
+                        (
+                            [fee] => 58.99
+                            [perc] => 0
+                            [total] => 58.99
+                        )
+
+                    [intelink] => 1
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 484.35
+                    [c5dru] => 0
+                    [c5fee] => 58.99
+                    [5] => 58.99
+                    [8] => 7.28
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 550.62
+        )
+
+    [5] => Array
+        (
+            [id] => 259151
+            [date] => 2024-11-19
+            [oper] => 3
+            [desc] => неолих/изп.лист
+            [amou] => 83.61
+            [move] => Array
+                (
+                    [24730] => Array
+                        (
+                            [tax] => 83.61
+                            [total] => 83.61
+                        )
+
+                    [taxamo] => 83.61
+                )
+
+            [rep2plus] => Array
+                (
+                    [9] => 83.61
+                    [c5fee] => 67.5
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 7.28
+                            [tax] => 158.93
+                            [total] => 575.24
+                        )
+
+                    [taxamo] => 575.24
+                    [0] => Array
+                        (
+                            [fee] => 67.5
+                            [perc] => 0
+                            [total] => 67.5
+                        )
+
+                    [intelink] => 1
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 7.28
+                            [tax] => 158.93
+                            [total] => 575.24
+                        )
+
+                    [taxamo] => 575.24
+                    [0] => Array
+                        (
+                            [fee] => 67.5
+                            [perc] => 0
+                            [total] => 67.5
+                        )
+
+                    [intelink] => 1
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 0
+                    [c5fee] => 67.5
+                    [5] => 67.5
+                    [8] => 7.28
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 642.74
+        )
+
+    [6] => Array
+        (
+            [id] => 11268
+            [date] => 2026-03-12
+            [oper] => 5
+            [desc] => 
+            [amou] => no
+            [idclai] => 0
+            [move] => Array
+                (
+                    [intelink] => 1
+                    [24730] => Array
+                        (
+                            [perc] => 65.09
+                            [total] => 65.09
+                        )
+
+                    [0] => Array
+                        (
+                            [perc] => 0
+                            [total] => 0
+                        )
+
+                    [taxamo] => 65.09
+                )
+
+            [para] => Array
+                (
+                    [24730] => Array
+                        (
+                            [0] => 2024-11-19
+                            [1] => 2026-03-12
+                            [2] => 409.03
+                        )
+
+                    [0] => Array
+                        (
+                            [0] => 2024-11-19
+                            [1] => 2026-03-12
+                            [2] => 
+                        )
+
+                )
+
+            [rep2plus] => Array
+                (
+                    [8] => 65.09
+                    [c5fee] => 73.74
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.37
+                            [tax] => 158.93
+                            [total] => 640.33
+                        )
+
+                    [taxamo] => 640.33
+                    [0] => Array
+                        (
+                            [fee] => 73.74
+                            [perc] => 0
+                            [total] => 73.74
+                        )
+
+                    [intelink] => 2
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.37
+                            [tax] => 158.93
+                            [total] => 640.33
+                        )
+
+                    [taxamo] => 640.33
+                    [0] => Array
+                        (
+                            [fee] => 73.74
+                            [perc] => 0
+                            [total] => 73.74
+                        )
+
+                    [intelink] => 2
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 0
+                    [c5fee] => 73.74
+                    [5] => 73.74
+                    [8] => 72.37
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 714.07
+        )
+
+    [7] => Array
+        (
+            [id] => 11268
+            [date] => 2026-03-12
+            [oper] => ap
+            [desc] => 
+            [amou] => 29.65
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => -29.65
+                            [total] => -29.65
+                        )
+
+                    [24730] => Array
+                        (
+                            [tax] => 29.65
+                            [total] => 29.65
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.37
+                            [tax] => 188.58
+                            [total] => 669.98
+                        )
+
+                    [taxamo] => 640.33
+                    [0] => Array
+                        (
+                            [fee] => 73.74
+                            [perc] => 0
+                            [tax] => -29.65
+                            [total] => 44.09
+                        )
+
+                    [intelink] => 2
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.37
+                            [tax] => 188.58
+                            [total] => 669.98
+                        )
+
+                    [taxamo] => 640.33
+                    [0] => Array
+                        (
+                            [fee] => 73.74
+                            [perc] => 0
+                            [tax] => -29.65
+                            [total] => 44.09
+                        )
+
+                    [intelink] => 2
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5fee] => 73.74
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 0
+                    [c5fee] => 73.74
+                    [5] => 73.74
+                    [8] => 72.37
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 714.07
+        )
+
+    [8] => Array
+        (
+            [id] => 259936
+            [date] => 2026-03-12
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 29.65
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 29.65
+                            [total] => 29.65
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 29.65
+                    [c5fee] => 73.74
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.37
+                            [tax] => 188.58
+                            [total] => 669.98
+                        )
+
+                    [taxamo] => 640.33
+                    [0] => Array
+                        (
+                            [fee] => 73.74
+                            [perc] => 0
+                            [tax] => 0
+                            [total] => 73.74
+                        )
+
+                    [intelink] => 2
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.37
+                            [tax] => 188.58
+                            [total] => 669.98
+                        )
+
+                    [taxamo] => 640.33
+                    [0] => Array
+                        (
+                            [fee] => 73.74
+                            [perc] => 0
+                            [tax] => 0
+                            [total] => 73.74
+                        )
+
+                    [intelink] => 2
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 29.65
+                    [c5fee] => 73.74
+                    [5] => 103.39
+                    [8] => 72.37
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 743.72
+        )
+
+    [9] => Array
+        (
+            [id] => 259154
+            [date] => 2026-03-12
+            [oper] => 3
+            [desc] => неолих/други.разх
+            [amou] => 153.39
+            [move] => Array
+                (
+                    [24730] => Array
+                        (
+                            [tax] => 153.39
+                            [total] => 153.39
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [7] => 153.39
+                    [c5fee] => 73.74
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.37
+                            [tax] => 341.97
+                            [total] => 823.37
+                        )
+
+                    [taxamo] => 640.33
+                    [0] => Array
+                        (
+                            [fee] => 73.74
+                            [perc] => 0
+                            [tax] => 0
+                            [total] => 73.74
+                        )
+
+                    [intelink] => 2
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.37
+                            [tax] => 341.97
+                            [total] => 823.37
+                        )
+
+                    [taxamo] => 640.33
+                    [0] => Array
+                        (
+                            [fee] => 73.74
+                            [perc] => 0
+                            [tax] => 0
+                            [total] => 73.74
+                        )
+
+                    [intelink] => 2
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 29.65
+                    [c5fee] => 73.74
+                    [5] => 103.39
+                    [8] => 72.37
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 897.11
+        )
+
+    [10] => Array
+        (
+            [id] => 257938
+            [date] => 2026-03-17
+            [oper] => 5
+            [desc] => 
+            [amou] => no
+            [idclai] => 0
+            [move] => Array
+                (
+                    [intelink] => 1
+                    [24730] => Array
+                        (
+                            [perc] => 0.59
+                            [total] => 0.59
+                        )
+
+                    [0] => Array
+                        (
+                            [perc] => 0
+                            [total] => 0
+                        )
+
+                    [taxamo] => 0.59
+                )
+
+            [para] => Array
+                (
+                    [24730] => Array
+                        (
+                            [0] => 2026-03-12
+                            [1] => 2026-03-17
+                            [2] => 409.03
+                        )
+
+                    [0] => Array
+                        (
+                            [0] => 2026-03-12
+                            [1] => 2026-03-17
+                            [2] => 
+                        )
+
+                )
+
+            [rep2plus] => Array
+                (
+                    [8] => 0.59
+                    [c5fee] => 73.8
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.96
+                            [tax] => 341.97
+                            [total] => 823.96
+                        )
+
+                    [taxamo] => 640.92
+                    [0] => Array
+                        (
+                            [fee] => 73.8
+                            [perc] => 0
+                            [tax] => 0
+                            [total] => 73.8
+                        )
+
+                    [intelink] => 3
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.96
+                            [tax] => 341.97
+                            [total] => 823.96
+                        )
+
+                    [taxamo] => 640.92
+                    [0] => Array
+                        (
+                            [fee] => 73.8
+                            [perc] => 0
+                            [tax] => 0
+                            [total] => 73.8
+                        )
+
+                    [intelink] => 3
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 29.65
+                    [c5fee] => 73.8
+                    [5] => 103.45
+                    [8] => 72.96
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 897.76
+        )
+
+    [11] => Array
+        (
+            [id] => 257938
+            [date] => 2026-03-17
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 5.62
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 5.62
+                            [total] => 5.62
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 5.62
+                    [c5fee] => 73.8
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.96
+                            [tax] => 341.97
+                            [total] => 823.96
+                        )
+
+                    [taxamo] => 640.92
+                    [0] => Array
+                        (
+                            [fee] => 73.8
+                            [perc] => 0
+                            [tax] => 5.62
+                            [total] => 79.42
+                        )
+
+                    [intelink] => 3
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 72.96
+                            [tax] => 341.97
+                            [total] => 823.96
+                        )
+
+                    [taxamo] => 640.92
+                    [0] => Array
+                        (
+                            [fee] => 73.8
+                            [perc] => 0
+                            [tax] => 5.62
+                            [total] => 79.42
+                        )
+
+                    [intelink] => 3
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 35.27
+                    [c5fee] => 73.8
+                    [5] => 109.07
+                    [8] => 72.96
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 903.38
+        )
+
+    [12] => Array
+        (
+            [id] => 259480
+            [date] => 2026-03-20
+            [oper] => 5
+            [desc] => 
+            [amou] => no
+            [idclai] => 0
+            [move] => Array
+                (
+                    [intelink] => 1
+                    [24730] => Array
+                        (
+                            [perc] => 0.35
+                            [total] => 0.35
+                        )
+
+                    [0] => Array
+                        (
+                            [perc] => 0
+                            [total] => 0
+                        )
+
+                    [taxamo] => 0.35
+                )
+
+            [para] => Array
+                (
+                    [24730] => Array
+                        (
+                            [0] => 2026-03-17
+                            [1] => 2026-03-20
+                            [2] => 409.03
+                        )
+
+                    [0] => Array
+                        (
+                            [0] => 2026-03-17
+                            [1] => 2026-03-20
+                            [2] => 
+                        )
+
+                )
+
+            [rep2plus] => Array
+                (
+                    [8] => 0.35
+                    [c5fee] => 73.83
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 5.62
+                            [total] => 79.45
+                        )
+
+                    [intelink] => 4
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 5.62
+                            [total] => 79.45
+                        )
+
+                    [intelink] => 4
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 35.27
+                    [c5fee] => 73.83
+                    [5] => 109.1
+                    [8] => 73.31
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 903.76
+        )
+
+    [13] => Array
+        (
+            [id] => 259155
+            [date] => 2026-03-20
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 13.8
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 13.8
+                            [total] => 13.8
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 13.8
+                    [c5fee] => 73.83
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 19.42
+                            [total] => 93.25
+                        )
+
+                    [intelink] => 4
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 19.42
+                            [total] => 93.25
+                        )
+
+                    [intelink] => 4
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 49.07
+                    [c5fee] => 73.83
+                    [5] => 122.9
+                    [8] => 73.31
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 917.56
+        )
+
+    [14] => Array
+        (
+            [id] => 259476
+            [date] => 2026-03-20
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 5.62
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 5.62
+                            [total] => 5.62
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 5.62
+                    [c5fee] => 73.83
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 25.04
+                            [total] => 98.87
+                        )
+
+                    [intelink] => 4
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 25.04
+                            [total] => 98.87
+                        )
+
+                    [intelink] => 4
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 54.69
+                    [c5fee] => 73.83
+                    [5] => 128.52
+                    [8] => 73.31
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 923.18
+        )
+
+    [15] => Array
+        (
+            [id] => 259478
+            [date] => 2026-03-20
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 3.07
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 3.07
+                            [total] => 3.07
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 3.07
+                    [c5fee] => 73.83
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 28.11
+                            [total] => 101.94
+                        )
+
+                    [intelink] => 4
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 28.11
+                            [total] => 101.94
+                        )
+
+                    [intelink] => 4
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 57.76
+                    [c5fee] => 73.83
+                    [5] => 131.59
+                    [8] => 73.31
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 926.25
+        )
+
+    [16] => Array
+        (
+            [id] => 259484
+            [date] => 2026-03-20
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 3.1
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 3.1
+                            [total] => 3.1
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 3.1
+                    [c5fee] => 73.83
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 31.21
+                            [total] => 105.04
+                        )
+
+                    [intelink] => 4
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 31.21
+                            [total] => 105.04
+                        )
+
+                    [intelink] => 4
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 60.86
+                    [c5fee] => 73.83
+                    [5] => 134.69
+                    [8] => 73.31
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 929.35
+        )
+
+    [17] => Array
+        (
+            [id] => 259480
+            [date] => 2026-03-20
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 3.07
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 3.07
+                            [total] => 3.07
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 3.07
+                    [c5fee] => 73.83
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 34.28
+                            [total] => 108.11
+                        )
+
+                    [intelink] => 4
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 34.28
+                            [total] => 108.11
+                        )
+
+                    [intelink] => 4
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 63.93
+                    [c5fee] => 73.83
+                    [5] => 137.76
+                    [8] => 73.31
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 932.42
+        )
+
+    [18] => Array
+        (
+            [id] => 259477
+            [date] => 2026-03-20
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 3.07
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 3.07
+                            [total] => 3.07
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 3.07
+                    [c5fee] => 73.83
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 37.35
+                            [total] => 111.18
+                        )
+
+                    [intelink] => 4
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 37.35
+                            [total] => 111.18
+                        )
+
+                    [intelink] => 4
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 67
+                    [c5fee] => 73.83
+                    [5] => 140.83
+                    [8] => 73.31
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 935.49
+        )
+
+    [19] => Array
+        (
+            [id] => 259482
+            [date] => 2026-03-20
+            [oper] => 3
+            [desc] => неолих/аванс.такси
+            [amou] => 3.07
+            [move] => Array
+                (
+                    [0] => Array
+                        (
+                            [tax] => 3.07
+                            [total] => 3.07
+                        )
+
+                    [taxamo] => 0
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5dru] => 3.07
+                    [c5fee] => 73.83
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 40.42
+                            [total] => 114.25
+                        )
+
+                    [intelink] => 4
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.31
+                            [tax] => 341.97
+                            [total] => 824.31
+                        )
+
+                    [taxamo] => 641.27
+                    [0] => Array
+                        (
+                            [fee] => 73.83
+                            [perc] => 0
+                            [tax] => 40.42
+                            [total] => 114.25
+                        )
+
+                    [intelink] => 4
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 70.07
+                    [c5fee] => 73.83
+                    [5] => 143.9
+                    [8] => 73.31
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 938.56
+        )
+
+    [20] => Array
+        (
+            [date] => 2026-03-23
+            [oper] => 5
+            [desc] => 
+            [idclai] => 
+            [amou] => no
+            [move] => Array
+                (
+                    [intelink] => 1
+                    [24730] => Array
+                        (
+                            [perc] => 0.35
+                            [total] => 0.35
+                        )
+
+                    [0] => Array
+                        (
+                            [perc] => 0
+                            [total] => 0
+                        )
+
+                    [taxamo] => 0.35
+                )
+
+            [para] => Array
+                (
+                    [24730] => Array
+                        (
+                            [0] => 2026-03-20
+                            [1] => 2026-03-23
+                            [2] => 409.03
+                        )
+
+                    [0] => Array
+                        (
+                            [0] => 2026-03-20
+                            [1] => 2026-03-23
+                            [2] => 
+                        )
+
+                )
+
+            [rep2plus] => Array
+                (
+                    [8] => 0.35
+                    [c5fee] => 73.87
+                )
+
+            [direction] => +
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.66
+                            [tax] => 341.97
+                            [total] => 824.66
+                        )
+
+                    [taxamo] => 641.62
+                    [0] => Array
+                        (
+                            [fee] => 73.87
+                            [perc] => 0
+                            [tax] => 40.42
+                            [total] => 114.29
+                        )
+
+                    [intelink] => 5
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.66
+                            [tax] => 341.97
+                            [total] => 824.66
+                        )
+
+                    [taxamo] => 641.62
+                    [0] => Array
+                        (
+                            [fee] => 73.87
+                            [perc] => 0
+                            [tax] => 40.42
+                            [total] => 114.29
+                        )
+
+                    [intelink] => 5
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 70.07
+                    [c5fee] => 73.87
+                    [5] => 143.94
+                    [8] => 73.66
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 938.95
+        )
+
+    [21] => Array
+        (
+            [date] => 2026-03-23
+            [oper] => 1
+            [desc] => 
+            [plus] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.66
+                            [tax] => 341.97
+                            [total] => 824.66
+                        )
+
+                    [taxamo] => 641.62
+                    [0] => Array
+                        (
+                            [fee] => 73.87
+                            [perc] => 0
+                            [tax] => 40.42
+                            [total] => 114.29
+                        )
+
+                    [intelink] => 5
+                )
+
+            [minu] => Array
+                (
+                )
+
+            [resu] => Array
+                (
+                    [24730] => Array
+                        (
+                            [capi] => 409.03
+                            [perc] => 73.66
+                            [tax] => 341.97
+                            [total] => 824.66
+                        )
+
+                    [taxamo] => 641.62
+                    [0] => Array
+                        (
+                            [fee] => 73.87
+                            [perc] => 0
+                            [tax] => 40.42
+                            [total] => 114.29
+                        )
+
+                    [intelink] => 5
+                )
+
+            [rep2plus] => Array
+                (
+                    [c5fee] => 73.87
+                )
+
+            [rep2resu] => Array
+                (
+                    [9] => 567.96
+                    [c5dru] => 70.07
+                    [c5fee] => 73.87
+                    [5] => 143.94
+                    [8] => 73.66
+                    [7] => 153.39
+                )
+
+            [percpaid] => Array
+                (
+                    [24730] => 0
+                    [0] => 0
+                )
+
+            [tosuma] => 938.95
+        )
+
+)

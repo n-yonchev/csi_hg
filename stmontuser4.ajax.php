@@ -1,0 +1,140 @@
+<?php
+# отгоре : 
+#    $iduser - логнатия потребител 
+#    $mode - текущия режим 
+
+									session_start();
+									include_once "common.php";
+
+											# функциите 
+											include_once "statis.inc.php";
+$GEPA= getparam();
+//print_r($GEPA);
+$iduser= $GEPA["user"];
+	$rouser= getrow("user",$iduser);
+					$smarty->assign("USERNAME", $rouser["name"]);
+$stperi= $GEPA["peri"];
+if (isset($stperi)){
+	list($d1,$d2)= explode("^",$stperi);
+					$smarty->assign("D1", $d1);
+					$smarty->assign("D2", $d2);
+}else{
+	$year= $GEPA["year"];
+	$stmont= $GEPA["mont"];
+					$smarty->assign("YEAR", $year);
+					$smarty->assign("MONT", $stmont);
+}
+
+/*
+# данните -  източник : stmont.php 
+#--------------------------------------------------------------------------------------------
+#--------- 9. обща събрана СУМА през периода по делата на деловодителя по деловодители -------------
+#--------- 10. събрана СУМА за ЧСИ през периода по делата на деловодителя по деловодители -------------
+# сума, а не брояч - в единна заявка 
+# ВНИМАНИЕ. 
+#    желаното разпределение е а)по делата и б)по такси и разноски, но са необходими доп.уточнения 
+						include_once "stmont.inc.php";
+$filt9= getfilt("finance.time");
+$que9= "select suit.id as caseid, suit.serial as caseseri, suit.year as caseyear
+	, sum(finance.inco) as coun
+	, sum(finance.separa+finance.separa2) as coun2
+	from finance
+	left join suit on finance.idcase=suit.id
+									$typelink
+	where $filt9  and suit.iduser=$iduser
+									and $typefilt
+	group by caseid
+	order by suit.year, suit.serial
+	";
+$mylist= $DB->select($que9);
+				# сумите по колони 
+							$suma= array();
+				foreach($mylist as $elem){
+							$suma[1] += $elem["coun"];
+							$suma[2] += $elem["coun2"];
+				}
+				$smarty->assign("SUMA", $suma);
+$smarty->assign("DATA", $mylist);
+#--------------------------------------------------------------------------------------------
+*/
+
+/*
+# данните -  източник : stmont.php 
+#--------------------------------------------------------------------------------------------
+#--------------------- 1a. брой дела, образувани към края на срока -----------------------------
+# 14.06.2012 - специално за Дервиш 
+if (empty($d2)){
+	$montend= 12*$year+$stmont;
+	$filt2= "12*year(suit.created)+month(suit.created) <= ".$montend;
+}else{
+	$filt2= "suit.created <= '$d2'";
+}
+# списък на делата 
+$qp1= "select suit.id";
+$qp2= "from suit";
+$qp3= "where $filt2 and iduser=$iduser";
+$que1a= "$qp1 $qp2 $qp3";
+//$lis1a= $DB->selectCol($que1a);
+//print_rr($lis1a);
+#--------- 2. брой отваряни собствени дела през периода по деловодители -------------
+# списък на делата 
+$filt2= getfilt("suithist.time");
+$que2= "select distinct suithist.idcase
+	from suithist
+	left join suit on suithist.idcase=suit.id
+where $filt2 and suithist.iduser=$iduser and suit.iduser=$iduser
+	";
+//$lis2= $DB->selectCol($que2);
+//print_rr($lis2);
+#--------- 3. брой Неотваряни собствени дела през периода по деловодители -------------
+# само от образуваните към края на срока 
+# списък на делата 
+$query= "
+	$qp1 ,suit.created, suit.serial as caseseri, suit.year as caseyear
+	$qp2
+left join ($que2) as t2 on suit.id=t2.idcase
+	$qp3
+and t2.idcase is null
+order by suit.year, suit.serial
+	";
+$mylist= $DB->select($query);
+//print_rr($mylist);
+$smarty->assign("DATA", $mylist);
+#--------------------------------------------------------------------------------------------
+*/
+
+# данните -  източник : stmont.php 
+#--------------------------------------------------------------------------------------------
+#--------- 5. брой изходени документи през периода по деловодители -------------
+# само документи с изх.номер/година 
+$filt5= "docuout.serial<>0 and docuout.year<>0";
+$filt5a= getfilt("docuout.registered");
+		if ($iduser==0){
+$filtspec= "(suit.iduser=0 or suit.iduser is null)";
+		}else{
+$filtspec= "suit.iduser=$iduser";
+		}
+$que5= "select docuout.id as id, docuout.serial, docuout.year
+	, docuout.registered, docuout.iddocutype, docuout.descrip, docuout.adresat
+	, suit.serial as caseseri, suit.year as caseyear
+	, docutype.text
+	from docuout
+	left join suit on docuout.idcase=suit.id
+	left join docutype on docuout.iddocutype=docutype.id
+where $filt5 and $filt5a 
+and $filtspec
+order by docuout.year, docuout.serial
+	";
+//and suit.iduser=$iduser
+$mylist= $DB->select($que5);
+$mylist= dbconv($mylist);
+$mylist= arstrip($mylist);
+//print_rr($mylist);
+$smarty->assign("DATA", $mylist);
+#--------------------------------------------------------------------------------------------
+
+
+# извеждаме 
+print smdisp("stmontuser4.ajax.tpl","iconv");
+
+?>

@@ -1,0 +1,1 @@
+onclick="document.location.href='{$LINK}'; return false;"

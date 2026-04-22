@@ -1,0 +1,524 @@
+<?php
+
+//session_name("abc");
+									session_start();
+									include_once "common.php";
+
+//print_r($_SERVER);
+# логнатия юзер 
+$iduser= @$_SESSION["iduser"];
+if (isset($iduser)){
+	$rouser= getrow("user",$iduser);
+	$smarty->assign("USNAME", $rouser["name"]);
+			# 15.09.2009 
+			# заради глобалния филтър номер-дело от-до +enter - main.tpl 
+			$logisadmin= ($rouser["type"]==ADMINTYPE);
+			$logisadmin= $logisadmin and ($rouser["inactive"]==0);
+$_SESSION["LOGGEDISADMIN"]= $logisadmin;
+			$smarty->assign("LOGGEDISADMIN", $logisadmin);
+					# 04.10.2010 - профил на логнатия юзер 
+					$usermainplan= $rouser["mainplan"];
+					$smarty->assign("ISMAINPLAN", isset($usermainplan));
+//var_dump($usermainplan);
+}else{
+//									# създаваме сесия чак тук 
+//									session_start();
+	redirect("login.php");
+exit;
+}
+
+# заглавен текст за ЧСИ 
+$headtext= @$_SESSION["headtext"];
+if (isset($headtext)){
+}else{
+//	$headtext= getofficename($iduser);
+	$rooffi= getofficerow($iduser);
+	$headtext= $rooffi["text"];
+}
+//print_r($_SESSION);
+
+# лявото главно меню - според правата 
+$arperm= explode(",",$rouser["listperm"]);
+
+									# 15.06.2010 - флаг - изп.дела нямат постоянни деловодители 
+									$rooffi= getofficerow($iduser);
+									$NOPERMUSER= ($rooffi["isnopermuser"]<>0);
+								$smarty->assign("NOPERMUSER", $NOPERMUSER);
+				
+				$isarchive= tabexists("archive");
+
+$maingroup = array(
+	array(
+		'title' => 'търси вх.док.',
+		'fdno',
+		'fdtx',
+		'fdus',
+		'fdda',
+		'fdye',
+		),
+	array(
+		'title' => 'търси дело',
+		'fino',
+		'fide',
+		'ficl',
+		'fius',
+		'fiye',
+	"caseglob",
+	"casecomp",
+	"allc2"
+		),
+//	'docu',
+	array(
+		'title' => 'вх.документи',
+		'docu',
+	'docucrea',
+		'aadocu',
+		'aacomp',
+	'certif',
+		),
+	'newc',
+//	'case',
+	array(
+		'title' => 'дела',
+		'cas1',
+		'cas2',
+//	"cas3",
+		'invi',
+	'finaca',
+	'comple',
+	'collmo'
+,'regius'
+,'regila'
+		),
+/*
+	array(
+		'title' => 'каса',
+		'cash',
+		'capa'
+		),
+	array(
+		'title' => 'банка',
+		'bapa',
+		'baym'
+		),
+*/
+	array(
+		'title' => 'финанси',
+	'finabank',
+	'fina',
+'finacash',
+//'finapack',
+'finarest',
+	'finasusp',
+/****
+	'finamo',
+"finatocrea",
+"finato"
+****/
+/*
+		'cash',
+		'capa',
+		'bapa',
+		'baym'
+*/
+		),
+	array(
+		'title' => 'справки',
+		'dore',
+		'abet',
+			"jour",
+			"oure",
+		"recase",
+			"rep1",
+			"rep2",
+		"cale"
+//			,"arbook"
+			,"arch"
+			,"bill"
+		),
+	array(
+		'title' => 'администриране',
+		'user',
+		'base',
+			"perc",
+			"allc",
+# 13.04 2009 - един документ - много дела 
+# отпада документи-09 
+//			"docu09",
+			"outd",
+# 24.07.2009 - редактиране на изх.шаблони - Бъзински - Софрониев 
+			"outtem",
+# 15.05.2010 - представители 
+			"agent",
+# 25.06.2010 - заместване 
+			"depu",
+# 13.07.2010 - наблюдатели 
+			"v1",
+//# 08.10.2010 - файл за регистъра 
+//+++++++++++++++++++++++++++++			"regi",
+//# 22.11.2010 - редове за сметка 
+//			"smet",
+		),
+//	'idva'
+# 05.04.2011 - нова група за регистъра - само админа 
+	array(
+		'title' => 'за регистъра',
+		'regiusfu',
+		'regilafu',
+			"regiusno",
+			"regilano",
+		),
+# 04.08.2009 нова група от глав.меню - вече и списъка на банките 
+	array(
+		'title' => 'списъци',
+		'idva',
+		'bank',
+		'advreg',
+		'napreg',
+		'katreg',
+		'vpireg',
+'clor',
+		),
+	array(
+		'title' => 'инструменти',
+		'calc'
+		),
+//	,'aadocu'
+# 13.04 2009 - един документ - много дела 
+# отпада документи за стари дела 
+//	,"oldc"
+	array(
+		'title' => 'ф',
+"finaac",
+"finasuma",
+"finapack",
+"finamo",
+"finatocrea",
+"finato"
+		),
+);
+
+$mainmenu["fdno"]["text"]= "по номер";	$mainmenu["fdno"]["php"]= "fdno.php";
+$mainmenu["fdda"]["text"]= "по дата";	$mainmenu["fdda"]["php"]= "fdda.php";
+$mainmenu["fdtx"]["text"]= "по текст";	$mainmenu["fdtx"]["php"]= "fdtx.php";
+$mainmenu["fdus"]["text"]= "по въвел";	$mainmenu["fdus"]["php"]= "fdus.php";
+$mainmenu["fdye"]["text"]= "по година";	$mainmenu["fdye"]["php"]= "fdye.php";
+
+$mainmenu["fino"]["text"]= "по номер";			$mainmenu["fino"]["php"]= "fino.php";
+$mainmenu["fide"]["text"]= "по длъжник";		$mainmenu["fide"]["php"]= "fide.php";
+$mainmenu["ficl"]["text"]= "по взискател";		$mainmenu["ficl"]["php"]= "ficl.php";
+									# 15.06.2010 - флаг - изп.дела нямат постоянни деловодители 
+									if ($NOPERMUSER){
+									}else{
+$mainmenu["fius"]["text"]= "по деловодител";	$mainmenu["fius"]["php"]= "fius.php";
+									}
+$mainmenu["fiye"]["text"]= "по година";			$mainmenu["fiye"]["php"]= "fiye.php";
+# 23.07.2009 - Бъзински - Т.Софрониев 
+# последователен списък дело от-до - деловодител 
+									# 15.06.2010 - флаг - изп.дела нямат постоянни деловодители 
+									if ($NOPERMUSER){
+									}else{
+$mainmenu["caseglob"]["text"]= "разпределение";			$mainmenu["caseglob"]["php"]= "caseglob.php";
+									}
+# 27.10.2009 - Бъзински - Т.Софрониев 
+# дела с непълни основни данни - по деловодители и години 
+$mainmenu["casecomp"]["text"]= "непълни";			$mainmenu["casecomp"]["php"]= "casecomp.php";
+# 07.03.2010 - Софрониев 
+# същото като allc = всички дела, но за НЕделоводители 
+$mainmenu["allc2"]["text"]= "филтър дела";		$mainmenu["allc2"]["php"]= "caseall2.php";
+				if ($rouser["type"]==ADMINTYPE){
+$mainmenu["user"]["text"]= "потребители";		$mainmenu["user"]["php"]= "user.php";
+$mainmenu["base"]["text"]= "основни данни";		$mainmenu["base"]["php"]= "base.php";
+$mainmenu["perc"]["text"]= "лихвени проценти";	$mainmenu["perc"]["php"]= "perc.php";
+$mainmenu["allc"]["text"]= "всички дела";		$mainmenu["allc"]["php"]= "caseall.php";
+# 13.04 2009 - един документ - много дела 
+# отпада документи-09 
+//$mainmenu["docu09"]["text"]= "вход.документи-2009";		$mainmenu["docu09"]["php"]= "docu09.php";
+$mainmenu["outd"]["text"]= "изходящи документи";		$mainmenu["outd"]["php"]= "outd.php";
+$mainmenu["outtem"]["text"]= "изходящи шаблони";		$mainmenu["outtem"]["php"]= "outtem.php";
+# 15.05.2010 - представители 
+$mainmenu["agent"]["text"]= "представители";		$mainmenu["agent"]["php"]= "agent.php";
+# 25.06.2010 - заместване 
+$mainmenu["depu"]["text"]= "заместване";		$mainmenu["depu"]["php"]= "depu.php";
+//# 13.07.2010 - наблюдатели 
+//$mainmenu["v1"]["text"]= "наблюдатели";		$mainmenu["v1"]["php"]= "v1.php";
+
+# 08.10.2010 - файл за регистъра 
+//++++++++++++++++++$mainmenu["regi"]["text"]= "за регистъра";		$mainmenu["regi"]["php"]= "regi.php";
+$mainmenu["regiusfu"]["text"]= "всички дела";			$mainmenu["regiusfu"]["php"]= "regiusfu.php";
+$mainmenu["regilafu"]["text"]= "- последен резултат";	$mainmenu["regilafu"]["php"]= "regilafu.php";
+$mainmenu["regiusno"]["text"]= "дела без деловодител";	$mainmenu["regiusno"]["php"]= "regiusno.php";
+$mainmenu["regilano"]["text"]= "- последен резултат";	$mainmenu["regilano"]["php"]= "regilano.php";
+//# 22.11.2010 - редове за сметка 
+//$mainmenu["smet"]["text"]= "сметка редове";		$mainmenu["smet"]["php"]= "smet.php";
+				}else{
+				}
+# 13.07.2010 - наблюдатели 
+# 11.05.2011 Дичев - достъп за всички 
+$mainmenu["v1"]["text"]= "наблюдатели";		$mainmenu["v1"]["php"]= "v1.php";
+		if (array_search(2,$arperm)===false){
+		}else{
+//$mainmenu["docu"]["text"]= "входящи документи";			$mainmenu["docu"]["php"]= "docu.php";
+$mainmenu["docu"]["text"]= "списък";			$mainmenu["docu"]["php"]= "docu.php";
+$mainmenu["docucrea"]["text"]= "образуване";	$mainmenu["docucrea"]["php"]= "docucrea.php";
+
+$mainmenu["dore"]["text"]= "входящ регистър";			$mainmenu["dore"]["php"]= "dore.php";
+$mainmenu["jour"]["text"]= "дневник на изв.действия";	$mainmenu["jour"]["php"]= "jour.php";
+$mainmenu["oure"]["text"]= "изходящ регистър";			$mainmenu["oure"]["php"]= "oure.php";
+$mainmenu["recase"]["text"]= "регистър на завед.дела";			$mainmenu["recase"]["php"]= "recase.php";
+$mainmenu["rep1"]["text"]= "отчет раздел 1";			$mainmenu["rep1"]["php"]= "rep1.php";
+$mainmenu["rep2"]["text"]= "отчет раздел 2";			$mainmenu["rep2"]["php"]= "rep2.php";
+//				if (tabexists("archive")){
+				if ($isarchive){
+//$mainmenu["arbook"]["text"]= "архивирани";			$mainmenu["arbook"]["php"]= "arbook.php";
+$mainmenu["arch"]["text"]= "архивна книга";			$mainmenu["arch"]["php"]= "arch.php";
+$mainmenu["bill"]["text"]= "сметки";				$mainmenu["bill"]["php"]= "bill.php";
+				}else{
+				}
+		}
+		if (array_search(3,$arperm)===false){
+		}else{
+									# 15.06.2010 - флаг - изп.дела нямат постоянни деловодители 
+									if ($NOPERMUSER){
+									}else{
+$mainmenu["newc"]["text"]= "свободни дела";			$mainmenu["newc"]["php"]= "newc.php";
+									}
+//$mainmenu["case"]["text"]= "дела";				$mainmenu["case"]["php"]= "case.php";
+	$mainmenu["cas1"]["text"]= "активни";				$mainmenu["cas1"]["php"]= "cas1.php";
+	$mainmenu["cas2"]["text"]= "прекратени";			$mainmenu["cas2"]["php"]= "cas2.php";
+//				if (tabexists("archive")){
+//				if ($isarchive){
+//	$mainmenu["cas3"]["text"]= "архивирани";			$mainmenu["cas3"]["php"]= "cas3.php";
+//				}else{
+//				}
+	$mainmenu["invi"]["text"]= "ПДИ";					$mainmenu["invi"]["php"]= "invi.php";
+	$mainmenu["finaca"]["text"]= "финанси";				$mainmenu["finaca"]["php"]= "finaca.php";
+	$mainmenu["comple"]["text"]= "непълни";				$mainmenu["comple"]["php"]= "comple.php";
+	$mainmenu["collmo"]["text"]= "събрани суми";		$mainmenu["collmo"]["php"]= "collmo.php";
+$mainmenu["regius"]["text"]= "за регистъра";		$mainmenu["regius"]["php"]= "regius.php";
+$mainmenu["regila"]["text"]= "- посл.резулт.";		$mainmenu["regila"]["php"]= "regila.php";
+
+				if ($rouser["type"]==ADMINTYPE){
+//$mainmenu["idva"]["text"]= "идва от";			$mainmenu["idva"]["php"]= "cofrom.php";
+$mainmenu["idva"]["text"]= "съдилища и други";			$mainmenu["idva"]["php"]= "cofrom.php";
+$mainmenu["bank"]["text"]= "банки";				$mainmenu["bank"]["php"]= "bank.php";
+$mainmenu["advreg"]["text"]= "клонове АДВ";		$mainmenu["advreg"]["php"]= "advreg.php";
+$mainmenu["napreg"]["text"]= "клонове НАП";		$mainmenu["napreg"]["php"]= "napreg.php";
+$mainmenu["katreg"]["text"]= "клонове КАТ";		$mainmenu["katreg"]["php"]= "katreg.php";
+$mainmenu["vpireg"]["text"]= "служби вписвания";		$mainmenu["vpireg"]["php"]= "vpireg.php";
+$mainmenu["clor"]["text"]= "произходи на вземане";		$mainmenu["clor"]["php"]= "clor.php";
+				}else{
+				}
+
+$mainmenu["aadocu"]["text"]= "типове";			$mainmenu["aadocu"]["php"]= "aadocu.php";
+$mainmenu["aacomp"]["text"]= "жалби";			$mainmenu["aacomp"]["php"]= "aacomp.php";
+$mainmenu["certif"]["text"]= "удостоверения";			$mainmenu["certif"]["php"]= "certif.php";
+		}
+
+# 13.04 2009 - един документ - много дела 
+# отпада документи за стари дела 
+//$mainmenu["oldc"]["text"]= "стари дела";			$mainmenu["oldc"]["php"]= "oldc.php";
+$mainmenu["abet"]["text"]= "азбучник";			$mainmenu["abet"]["php"]= "abet.php";
+$mainmenu["calc"]["text"]= "лихвен калкулатор";		$mainmenu["calc"]["php"]= "calc.php";
+# 15.03.2010 - общ календар на събитията за кантората 
+$mainmenu["cale"]["text"]= "календар на събитията";		$mainmenu["cale"]["php"]= "cale.php";
+		#---- neno 28.01.2009 -----------
+//$mainmenu["visu"]["text"]= "оформление";		$mainmenu["visu"]["php"]= "visu.php";
+
+//$mainmenu["vzis"]["text"]= "взискатели";		$mainmenu["vzis"]["php"]= "vziska.php";
+//$mainmenu["dlaj"]["text"]= "длъжници";			$mainmenu["dlaj"]["php"]= "dlajni.php";
+$mainmenu["exit"]["text"]= "изход";				//$mainmenu["exit"]["php"]= "mode=exit";
+
+//		if (array_search(3,$arperm)===false and array_search(4,$arperm)===false){
+		if (array_search(4,$arperm)===false){
+		}else{
+# 15.06.2009 - добавихме права финанси 
+$mainmenu["finabank"]["text"]= "извлечения";	$mainmenu["finabank"]["php"]= "finabank.php";
+$mainmenu["fina"]["text"]= "постъпления";		$mainmenu["fina"]["php"]= "fina.php";
+$mainmenu["finacash"]["text"]= "суми в брой";	$mainmenu["finacash"]["php"]= "finacash.php";
+
+$mainmenu["finasuma"]["text"]= "суми за превод";		$mainmenu["finasuma"]["php"]= "finasuma.php";
+$mainmenu["finapack"]["text"]= "пакети за превод";		$mainmenu["finapack"]["php"]= "finapack.php";
+$mainmenu["finarest"]["text"]= "игнорирани";		$mainmenu["finarest"]["php"]= "finarest.php";
+$mainmenu["finasusp"]["text"]= "съмнителни";		$mainmenu["finasusp"]["php"]= "finasusp.php";
+//			$mainmenu["finasusp"]["text"]= "&nbsp;&nbsp;&nbsp;";		$mainmenu["finasusp"]["php"]= "finasusp.php";
+//$mainmenu["fina2"]["text"]= "постъпления-2";		$mainmenu["fina2"]["php"]= "fina2.php";
+//$mainmenu["finamo"]["text"]= "постъпления-месеци";		$mainmenu["finamo"]["php"]= "finamo.php";
+$mainmenu["finamo"]["text"]= "постъпления-месеци";		$mainmenu["finamo"]["php"]= "finamo.php";
+//+++++++$mainmenu["finatocrea"]["text"]= "преводи-подготовка";		$mainmenu["finatocrea"]["php"]= "finatocrea.php";
+$mainmenu["finatocrea"]["text"]= "[пп]";		$mainmenu["finatocrea"]["php"]= "finatocrea.php";
+$mainmenu["finato"]["text"]= "преводи";		$mainmenu["finato"]["php"]= "finato.php";
+$mainmenu["finaac"]["text"]= "банкови сметки";		$mainmenu["finaac"]["php"]= "finaac.php";
+/*
+$mainmenu["cash"]["text"]= "приходни ордери";		$mainmenu["cash"]["php"]= "cash.php";
+$mainmenu["capa"]["text"]= "касови пакети";		$mainmenu["capa"]["php"]= "capa.php";
+$mainmenu["bapa"]["text"]= "банкови постъпления";	$mainmenu["bapa"]["php"]= "bapa.php";
+$mainmenu["baym"]["text"]= "банкови плащания";		$mainmenu["baym"]["php"]= "baym.php";
+*/
+		}
+
+//$mode= $_REQUEST["mode"];
+//$mode= isset($mode) ? $mode : ${$ak=array_keys($mainmenu)}[0];
+
+
+# вземаме масива с входните параметри 
+$GETPARAM= getparam();
+//print_r($GETPARAM);
+							# заради новия дизайн 
+							$pageform= $_POST["pageform"];
+							if (isset($pageform)){
+$GETPARAM["page"]= $pageform;
+							}else{
+							}
+//print "INDEX.PHP <br>";
+//print_r($GETPARAM);
+//print "<br> INDEX.PHP";
+
+/**/
+# главния режим 
+$mode= $GETPARAM["mode"];
+if (isset($mode)){
+}else{
+	//$akey= array_keys($mainmenu);
+	//$mode= $akey[0];
+	if (0){
+	}elseif (isset($mainmenu["newc"])){
+		$mode= "newc";
+									# 15.06.2010 - флаг - изп.дела нямат постоянни деловодители 
+									}elseif ($NOPERMUSER){
+										if (isset($mainmenu["cas1"])){
+											$mode= "cas1";
+											$GETPARAM["mode"]= $mode;
+										}elseif (isset($mainmenu["docu"])){
+											$mode= "docu";
+											$GETPARAM["mode"]= $mode;
+										}else{
+											$mode= "fino";
+											$GETPARAM["mode"]= $mode;
+										}
+	}elseif (isset($mainmenu["docu"])){
+		$mode= "docu";
+# 15.06.2009 - добавихме права финанси 
+	}elseif (isset($mainmenu["fina"])){
+		$mode= "fina";
+	}elseif (isset($mainmenu["user"])){
+		$mode= "user";
+	}else{
+		$mode= "fino";
+	}
+}
+//var_dump($mode);
+/**/
+
+//printarr($_SERVER);
+//print $_SERVER["SCRIPT_NAME"];
+# евентуален изход 
+if ($mode=="exit"){
+	session_destroy();
+//	redirect("index.php");
+	redirect($_SERVER["PHP_SELF"]);
+}else{
+}
+
+# криптираме линковете в менюто 
+foreach($mainmenu as $inmenu=>$elmenu){
+	$mainmenu[$inmenu]["link"]= geturl("mode=$inmenu");
+	
+//print "<br>$aaa";
+}
+
+//var_dump($mode);
+					# скрипта според режима 
+					# да зарежда променливата $pagecont 
+					include_once($mainmenu[$mode]["php"]);
+$smarty->assign("CONTENT", $pagecont);
+
+			# нено -------------------------
+			# трансформация според ролята 
+									$maing2= array();
+			foreach($maingroup as $grelem){
+				if (is_array($grelem)){
+					$flagok= false;
+					foreach($grelem as $elem){
+						if ($elem=="title"){
+						}else{
+							if (array_key_exists($elem,$mainmenu)){
+								$flagok= true;
+								break;
+							}else{
+							}
+						}
+					}
+					if ($flagok){
+									$maing2[]= $grelem;
+					}else{
+					}
+				}else{
+					if (array_key_exists($grelem,$mainmenu)){
+									$maing2[]= $grelem;
+					}else{
+					}
+				}
+			}
+									$maingroup= $maing2;
+			# ------------------------------
+
+# извеждаме 
+$smarty->assign("MAINGROUP", $maingroup);
+$smarty->assign("MAINMENU", $mainmenu);
+$smarty->assign("MODE", $mode);
+//print "<h2>".$rouser["name"]."</h2>";
+//$smarty->assign("USNAME", $rouser["name"]);
+//smdisp("main.tpl");
+//print "<xmp>".smdisp("main.tpl","iconv")."</xmp>";
+# чак сега 
+$smarty->assign("HEADTEXT", $_SESSION["headtext"]);
+
+# 17.04.2009 
+# добавяме и последни номера входящ документ и дело 
+$rolastdocu= $DB->select("select serial, year from docu order by year desc, serial desc limit 1");
+$smarty->assign("LASTDOCU", $rolastdocu[0]);
+$rolastcase= $DB->select("select serial, year from suit order by year desc, serial desc limit 1");
+$smarty->assign("LASTCASE", $rolastcase[0]);
+# 30.03.2010 
+# броя на предстоящите събития в следв.10 дни - само за логнатия 
+$dat1= date("Y-m-d");
+	list($ye,$mo,$da)= explode("-",$dat1);
+	$tim2= mktime(0,0,1, $mo,$da+9,$ye);
+$dat2= date("Y-m-d",$tim2);
+//print "[$dat1][$dat2]";
+							# 29.09.2010 - рожден ден 
+							# само от делата на логнатия или от всички дела 
+							$filteven= ($NOPERMUSER) ? "1" : "suit.iduser=?d";
+/*
+$evencoun= $DB->selectCell("select count(*) 
+	from suitevent 
+	left join suit on suitevent.idcase=suit.id
+	where date>=? and date<=? and suit.iduser=?d
+	"  ,$dat1,$dat2,$_SESSION["iduser"]);
+*/
+$evencoun= $DB->selectCell("select count(*) 
+	from suitevent 
+	left join suit on suitevent.idcase=suit.id
+	where date>=? and date<=? and $filteven
+	"  ,$dat1,$dat2,$_SESSION["iduser"]);
+$smarty->assign("EVENCOUN", $evencoun);
+$smarty->assign("EVENLINK", "calecoming.ajax.php".geturl("dat1=".$dat1."&dat2=".$dat2));
+
+# 17.06.2009 
+# за финансиста - заради насочване на постъпление към дело 
+$sedire= $_SESSION["direcase"];
+if (isset($sedire)){
+	$smarty->assign("DATADIRE", $sedire);
+}else{
+}
+
+								# заради отпечатване във вътр.фрейм 
+								if ($GETPARAM["print"]=="yes"){
+print smdisp("_print.tpl","iconv");
+								}else{
+print smdisp("main.tpl","iconv");
+//print smdisp("main.tpl","fetch");
+								}
+
+?>

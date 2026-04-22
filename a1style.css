@@ -1,0 +1,18 @@
+input,button {font:normal 50px verdana;}
+
+.cdiv {
+  text-align: center;
+  margin: 0 auto;
+}
+.ctex {
+  background: cornflowerblue;
+  color: #fff;
+  padding:10px 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#canvas {
+  display: none;
+}
+ 

@@ -1,0 +1,21 @@
+SELECT egn,bulstat,iban,bic,name, count(*) as coun
+FROM `claimer` 
+group by concat(egn,"/",bulstat),iban,bic
+order by coun desc
+
+SELECT bulstat,name, count(*) as coun
+FROM `claimer` 
+group by bulstat,name
+order by coun desc
+
+SELECT bulstat,name, count(*) as coun
+FROM `claimer` 
+group by bulstat,name
+order by name
+
+SELECT bulstat,name,iban, count(*) as coun
+FROM `claimer` 
+where bulstat<>''
+group by bulstat,name,iban
+order by name
+

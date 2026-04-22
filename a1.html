@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>снимка за изх.документ</title>
+  <link rel="stylesheet" href="a1style.css">
+<script src="js/jquery-1.2.6.pack.js"></script>
+</head>
+<body style="font:normal 50px verdana;">
+
+<div id="div1" class="cdiv">
+   <video id="video" width="700" height="1050" autoplay></video>
+<br>
+   <a href="#" id="capture" class="ctex">СНИМАЙ</a>
+   <canvas id="canvas" width=1000" height="1500"></canvas>
+</div>
+
+<div id="div2" align=center style="display:none;background:silver;padding:10px;margin:20px;">
+регистриране за снимка <br>от телефон
+<hr style="background:blue;">
+име
+<br>
+<input type="text" name="username" id="username" size=20 autocomplete=off>
+<br>
+парола
+<br>
+<input type="password" name="password" id="password" size=20 autocomplete=off>
+<br>
+<br>
+<button onclick="goregi();">готово</button>
+<br>&nbsp;
+</div>
+
+<span style="position:absolute;width:100px;height:100px;left:0px;top:0px;" onclick='show1();'>
+</span>
+<span style="position:absolute;width:100px;height:300px;" onclick='show2();'>
+</span>
+  
+<script src="a1photo.js"></script>
+
+</body>
+</html>

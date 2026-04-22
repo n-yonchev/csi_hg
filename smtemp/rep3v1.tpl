@@ -1,0 +1,1 @@
+<span style="font: normal 10pt verdana;"> подготовката е приключена </span>

@@ -1,0 +1,369 @@
+{*----
+<table class="d_table" width='' cellspacing='0' cellpadding='0' align=center>
+----*}
+<table class="d_table" cellspacing='0' cellpadding='0' {include file="_cazoplan.tpl"}>
+	<thead>
+		<tr>
+		<td class='d_table_title' colspan='200' onclick="toggle(this,event);">
+<div style="float:left">
+постъпления
+</div>
+{***
+			{if $FLAGNOCHANGE}
+***}
+			{if $FLAGNOCHANGE and ! ($FINALOGGED or $FLAGCASHONLY)}
+			{else}
+<div class='d_table_button' style="float:right">
+<a href="caseeditzone.php{$GRDIST}" class="nyroModal" target="_blank"><img src="images/grdist.gif" title="групово разпределяне"></a>
+&nbsp;&nbsp;&nbsp;
+{include file='_button.tpl' HREF="caseeditzone.php$ADDNEW" CLASS='nyroModal' TARGET='_blank' TITLE='добави'}
+</div>
+			{/if}
+		</tr>
+	</thead>
+		<tr class='header'>
+<td> сума </td>
+	<td class='sep'>&nbsp;</td>
+<td> тип </td>
+	<td class='sep'>&nbsp;</td>
+<td> длъжник </td>
+	<td class='sep'>&nbsp;</td>
+<td> още </td>
+	<td class='sep'>&nbsp;</td>
+<td> исто<br>рия </td>
+{*----
+				{if $FLAGNOCHANGE}
+----*}
+				{*---- финансиста да може да корегира постъпленията от тази зона в делото ----*}
+{*
+				{if $FLAGNOCHANGE and !$FINALOGGED}
+				{else}
+*}
+	<td class='sep'>&nbsp;</td>
+<td>&nbsp;</td>
+{*
+				{/if}
+*}
+	<td class='sep'>&nbsp;</td>
+<td> нераз<br>пред </td>
+	<td class='sep'>&nbsp;</td>
+<td> при<br>ключ </td>
+	<td class='sep'>&nbsp;</td>
+{*---- 07.01.2011 групово приключване - източник:_fina.tpl ----*}
+<td align=center> 
+<img id="grimg" src="images/clos.gif" title="приключи маркираните" style="display:none;cursor:pointer;" onclick="graction();">
+	<td class='sep'>&nbsp;</td>
+<td> дата погасяв </td>
+		</tr>
+	<tbody>
+		{foreach from=$LIST item=elem key=ekey}
+						{assign var="myid" value=$elem.id}
+{*----
+		<tr  onmouseover='this.className="tr_hover";' onmouseout='this.className="";'>
+----*}
+		<tr onmouseover='this.className="trhove";' onmouseout='this.className="";'>
+<td align=right> {$elem.inco|tomoney2}</td>
+	<td class='sep'>&nbsp;</td>	
+				{assign var="arindx" value=$elem.idtype}
+<td> {$ARTYPE.$arindx} </td>
+	<td class='sep'>&nbsp;</td>	
+<td> 
+				{if empty($elem.debtname)}
+<font color="red">неопределен</font>
+				{else}
+					{if in_array($elem.iddebtor,$ARDEBT)}
+{$elem.debtname} 
+					{else}
+<span class="no">
+{$elem.debtname} 
+</span>
+					{/if}
+				{/if}
+														{*---- ГЛОБАЛЕН ФЛАГ - наблюдател ----*}
+														{if $smarty.session.VIEWFLAG_FINANOEDIT}
+														{else}
+				{if $elem.isclosed and $DEBTCOUN>1}
+<span class="dechan" rel="cazofinadebt.ajax.php{$elem.linkdebt}" title="смени длъжника" style="cursor:help"> 
+<img src="images/filt.gif"> </span>
+				{else}
+				{/if}
+														{/if}
+</td>
+
+{*---- допълнителна информация ----*}
+	<td class='sep'>&nbsp;</td>	
+<td align=center><img src="images/view.png" class="ttip" rel="#cont{$myid}" title="допълнителна информация" style="cursor:help">
+{*---- съдържание на доп.информация ----*}
+<span id="cont{$myid}" style="display: none">
+{include file="cazofinainfo.tpl"}
+</span>
+{*---- край на доп.информация ----*}
+</td>
+
+{*---- история ----*}
+	<td class='sep'>&nbsp;</td>	
+			{if $elem.histcoun==0}
+<td>&nbsp;</td>
+			{else}
+<td align=center>
+														{*---- ГЛОБАЛЕН ФЛАГ - наблюдател ----*}
+														{if $smarty.session.VIEWFLAG_FINANOEDIT}
+														{else}
+<a href="caseeditzone.php{$elem.hist}" class="nyroModal" target="_blank">
+<span class="finahist" title="виж историята">{$elem.histcoun}</span>
+</a>
+														{/if}
+</td>
+			{/if}
+
+				{*---- финансиста да може да корегира постъпленията от тази зона в делото ----*}
+{*------
+				{if $FLAGNOCHANGE and !$FINALOGGED}
+				{else}
+		<td class='sep'>&nbsp;</td>
+<td align=left>
+<nobr>
+	{if $elem.isclosed==1 and $elem.idtype<>7}
+<img src="images/info.gif" class="info" rel="caseeditzone.php{$elem.info}" title="информация за приключено постъпление" style="cursor:help">
+	{else}
+<a href="caseeditzone.php{$elem.edit}" class="nyroModal" target="_blank"><img src="images/edit.png" title="корегирай"></a>
+<a href="caseeditzone.php{$elem.dele}" class="nyroModal" target="_blank"><img src="images/free.gif" title="изтрий"></a>
+	{/if}
+					{if $elem.idtype==2}
+<a href="caseeditzone.php{$elem.prin}" class="nyroModal" target="_blank"><img src="images/print.gif" title="отпечати ПКО"></a>
+					{else}
+&nbsp;
+					{/if}
+</nobr>
+</td>
+				{/if}
+------*}
+				
+{*-----------------
+							{assign var=fledit value=false}
+							{assign var=flprin value=false}
+							{assign var=flinfo value=false}
+				{if $elem.idtype==2}
+							{assign var=fledit value=true}
+							{assign var=flprin value=true}
+				{else}
+					{if $FLAGNOCHANGE and !$FINALOGGED}
+					{else}
+						{if $elem.isclosed==1 and $elem.idtype<>7}
+							{assign var=flinfo value=true}
+						{else}
+							{assign var=fledit value=true}
+						{/if}
+					{/if}
+				{/if}
+-----------------*}
+
+				{*---- зареждаме флагове за иконите ----*}
+							{assign var=fledit value=false}
+							{assign var=flprin value=false}
+							{assign var=flinfo value=false}
+														{*---- ГЛОБАЛЕН ФЛАГ - наблюдател ----*}
+{*
+{foreach from=$smarty.session item=itse key=kese}
+	sess={$kese}={$itse}
+	<br>
+{/foreach}
+*}
+														{if $smarty.session.VIEWFLAG_FINANOEDIT}
+														{else}
+				{if $elem.isclosed==1}
+					{*---- вече приключено ----*}
+							{assign var=flinfo value=true}
+				{else}
+					{*---- неприключено ----*}
+					{if $elem.idtype==2}
+						{*---- прих.касов ордер ----*}
+							{assign var=fledit value=true}
+							{assign var=flprin value=true}
+					{else}
+						{*---- останалите типове ----*}
+						{if $FLAGNOCHANGE and !$FINALOGGED}
+							{*---- няма права за корекция ----*}
+						{else}
+							{*---- има права за корекция ----*}
+							{assign var=fledit value=true}
+						{/if}
+					{/if}
+				{/if}
+														{/if}
+
+				{*---- клетката с икони - според състоянието на флаговете ----*}
+		<td class='sep'>&nbsp;</td>
+<td align=left>
+<nobr>
+				{if $fledit}
+<a href="caseeditzone.php{$elem.edit}" class="nyroModal" target="_blank"><img src="images/edit.png" title="корегирай"></a>
+<a href="caseeditzone.php{$elem.dele}" class="nyroModal" target="_blank"><img src="images/free.gif" title="изтрий"></a>
+				{else}
+				{/if}
+				{if $flprin}
+{***
+<a href="caseeditzone.php{$elem.prin}" class="nyroModal" target="_blank"><img src="images/print.gif" title="отпечати ПКО"></a>
+<a href="#" onclick="fuprin('caseeditzone.php{$elem.prin}');"><img src="images/print.gif" title="отпечати ПКО"></a>
+***}
+<a href="#" onclick="fuprin('{$elem.prin}');"><img src="images/print.gif" title="отпечати ПКО"></a>
+				{else}
+				{/if}
+				{if $flinfo}
+<img src="images/info.gif" class="info" rel="caseeditzone.php{$elem.info}" title="информация за приключено постъпление" style="cursor:help">
+				{else}
+				{/if}
+</nobr>
+</td>
+
+{*---- неразпределения остатък, източник : _fina.tpl ----*}
+	<td class='sep'>&nbsp;</td>
+<td align=right> 
+	{if $elem.rest==0}
+-
+	{else}
+{$elem.rest|tomoney:2}
+	{/if}
+</td>
+
+{*---- приключване - текст, източник : _fina.tpl ----*}
+	<td class='sep'>&nbsp;</td>
+<td align=center>
+								{assign var=isoldway value=false}
+{include file="cazofinaendd.tpl" INCASE=true isoldway=false}
+{*---- 07.01.2011 групово приключване - източник:_fina.tpl ----*}
+	<td class='sep'>&nbsp;</td>
+<td align=center>
+												{if $grclos}
+<input type=checkbox id="cbfina{$elem.id}" rela="cbfina" onclick="setgrimg();">
+												{else}
+												{/if}
+
+{*---- дата за погасяването ----*}
+	<td class='sep'>&nbsp;</td>
+<td align=left>
+{*----
+	{if $elem.idcase<>0 and $elem.rest==0}
+		{if $elem.isclosed==1}
+----*}
+			{if empty($elem.datebala)}
+				{assign var=daco value="няма"}
+				{assign var=dast value="finahistno"}
+			{else}
+				{assign var=daco value=$elem.datebala|date_format:"%d.%m.%Y"}
+				{assign var=dast value="finahist"}
+			{/if}
+														{*---- ГЛОБАЛЕН ФЛАГ - наблюдател ----*}
+														{if $smarty.session.VIEWFLAG_FINANOEDIT}
+{$daco}
+														{else}
+<a href="caseeditzone.php{$elem.date}" class="nyroModal" target="_blank">
+<span class="{$dast}" title="корегирай датата"> {$daco}
+</span></a>
+														{/if}
+{*----
+		{else}
+&nbsp;
+		{/if}
+	{else}
+&nbsp;
+	{/if}
+----*}
+</td>
+
+		</tr>
+		{/foreach}	
+
+{*------------------- сумите по длъжници ----------------------*}
+											{assign var=first value=true}
+		{foreach from=$ARSUDEBT item=elem key=ekey}
+					<tr>
+<td align=right class="recapitulation"> {$elem.suma|tomoney2}
+<td class='sep'>&nbsp;</td>
+<td align=left class="recapitulation" colspan=11> общо от 
+				{if empty($elem.name)}
+<font color="red">неопределен</font>
+				{else}
+{$elem.name}
+				{/if}
+<td class='sep'>&nbsp;</td>
+											{if $first}
+												{assign var=first value=false}
+<td align=center class="recapitulation" rowspan={$ARSUDEBTLEN} colspan=6> 
+<font size=+1><b>{$SUTOTA|tomoney2}</b></font>
+<br> общо внесени
+											{else}
+											{/if}
+		{/foreach}	
+
+	</tbody>
+</table>
+
+<link rel="stylesheet" href="cluetip/jquery.cluetip.css" type="text/css" />
+<script type="text/javascript">
+$(document).ready(function() {ldelim}
+	$('a.nyroModal').nyroModal({ldelim}width:520, height:400{rdelim});
+	$('.ttip').cluetip({ldelim} width: 300, local:true, cursor:'pointer' {rdelim});
+$('.info').cluetip({ldelim} width: 360, cursor:'help' {rdelim});
+$('.dechan').cluetip({ldelim}
+//	cluetipClass: 'rounded', 
+	arrows: true, 
+	width: 200,
+	sticky: true,
+	mouseOutClose: true,
+	closeText: '<b>x</b>',
+	closePosition: 'title'
+	{rdelim});
+{rdelim});
+{*---- 07.01.2011 групово приключване - източник:_fina.tpl ----*}
+function graction(){ldelim}
+	var lico= cbcoun();
+	if (lico==""){ldelim}
+	{rdelim}else{ldelim}
+//alert(lico);
+		$.nyroModalManual({ldelim}
+			url: 'cazofinaclosgr.ajax.php?para='+lico.substr(1)
+			,forceType: 'iframe'
+			{rdelim});	
+	{rdelim}
+{rdelim}
+function setgrimg(){ldelim}
+	var lico= cbcoun();
+	if (lico==""){ldelim}
+		$("#grimg").hide();
+	{rdelim}else{ldelim}
+		$("#grimg").show();
+	{rdelim}
+{rdelim}
+function cbcoun(){ldelim}
+	var list= $("input[@rela='cbfina']");
+	var lico= "";
+//	var lico= 0;
+	for (var i=0; i<list.length; i++){ldelim}
+		if (list[i].checked){ldelim}
+			lico += "/"+list[i].id.substr(6);
+//			lico += 1;
+		{rdelim}else{ldelim}
+		{rdelim}
+	{rdelim}
+//alert(lico);
+return lico;
+{rdelim}
+
+function proc4(p1){ldelim}
+		jQuery.ajax({ldelim}
+			url: "cazofinaigno.ajax.php?f="+p1
+			,success: succ2
+			{rdelim});
+{rdelim}
+function succ2(data){ldelim}
+	var arre= data.split("^");
+	var ok= arre[0];
+	if (ok=="ok"){ldelim}
+$('#tpaymlink').click();
+$('#tactulink').click();
+	{rdelim}else{ldelim}
+alert("ERROR"+String.fromCharCode(10)+data);
+	{rdelim}
+{rdelim}
+</script>

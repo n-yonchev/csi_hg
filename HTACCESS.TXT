@@ -1,0 +1,4 @@
+Order Deny,Allow
+Deny from all
+Allow from [IPLIST]
+ErrorDocument 403 [BASEPATH]/error/iperror1.php
