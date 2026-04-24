@@ -14,6 +14,7 @@ $arsubm["rep5"]["text"]= "преведени на ЧСИ суми през месец";	$arsubm["rep5"]["ph
 $arsubm["rep6"]["text"]= "постъпили суми през месец";	$arsubm["rep6"]["php"]= "strep6.php";
 $arsubm["rep7"]["text"]= "преведени на взискател/представител за период";	$arsubm["rep7"]["php"]= "strep7.php";
 $arsubm["rep9"]["text"]= "висящи дела по ЕГН";	$arsubm["rep9"]["php"]= "strep9.php";
+$arsubm["rep10"]["text"]= "неразпределени суми на взискател за период";	$arsubm["rep10"]["php"]= "strep10.php";
 
 $baseurl= "mode=".$mode;
 foreach ($arsubm as $suin=>$x2){
